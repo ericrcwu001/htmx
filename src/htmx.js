@@ -363,7 +363,7 @@ var htmx = (function() {
   /**
    * Parses an interval string consistent with the way htmx does. Useful for plugins that have timing-related attributes.
    *
-   * Caution: Accepts an int followed by either **s** or **ms**. All other values use **parseFloat**
+   * Caution: Accepts an int followed by either **ms**, **s**, **m** or **h**. All other values use **parseFloat**
    *
    * @see https://htmx.org/api/#parseInterval
    *
@@ -382,6 +382,8 @@ var htmx = (function() {
       interval = parseFloat(str.slice(0, -1)) * 1000
     } else if (str.slice(-1) == 'm') {
       interval = parseFloat(str.slice(0, -1)) * 1000 * 60
+    } else if (str.slice(-1) == 'h') {
+      interval = parseFloat(str.slice(0, -1)) * 1000 * 60 * 60
     } else {
       interval = parseFloat(str)
     }

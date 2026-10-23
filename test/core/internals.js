@@ -66,6 +66,10 @@ describe('Core htmx internals Tests', function() {
     chai.expect(htmx.parseInterval('0ms')).to.be.equal(0)
     chai.expect(htmx.parseInterval('0s')).to.be.equal(0)
     chai.expect(htmx.parseInterval('0m')).to.be.equal(0)
+    chai.expect(htmx.parseInterval('2m')).to.be.equal(120000)
+    chai.expect(htmx.parseInterval('0h')).to.be.equal(0)
+    chai.expect(htmx.parseInterval('1h')).to.be.equal(3600000)
+    chai.expect(htmx.parseInterval('1.5h')).to.be.equal(5400000)
     chai.expect(htmx.parseInterval('0')).to.be.equal(0)
     chai.expect(htmx.parseInterval('5')).to.be.equal(5)
 

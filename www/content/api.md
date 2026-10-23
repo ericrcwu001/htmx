@@ -370,7 +370,7 @@ initializing the content with a javascript library
 
 Parses an interval string consistent with the way htmx does.  Useful for plugins that have timing-related attributes.
 
-Caution: Accepts an int followed by either `s` or `ms`. All other values use `parseFloat`
+Caution: Accepts an int followed by either `ms`, `s`, `m` or `h`. All other values use `parseFloat`
 
 ##### Parameters
 
@@ -382,8 +382,11 @@ Caution: Accepts an int followed by either `s` or `ms`. All other values use `pa
     // returns 3000
     var milliseconds = htmx.parseInterval("3s");
 
+    // returns 7200000
+    var milliseconds = htmx.parseInterval("2h");
+
     // returns 3 - Caution
-    var milliseconds = htmx.parseInterval("3m");
+    var milliseconds = htmx.parseInterval("3");
 ```
 
 ### Method - `htmx.process()` {#process}
