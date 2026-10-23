@@ -27,7 +27,7 @@ npm run types-check                     # tsc --checkJs over src/htmx.js; JSDoc 
 open test/index.html                    # in-browser Mocha runner for humans; agents can't read its results, so use `npm test <file>`
 ```
 
-The runner prints every passing test plus browser logs. Filter it: `npm test 2>&1 | grep -E "test files|✗|❌|Error" | tail -20`. The `N/N test files | X passed, Y failed` line is the result. If the first file fails with "Browser tests did not start after 20000ms", it is a cold-start flake. Rerun before investigating.
+The runner prints every passing test plus browser logs, and many tests log errors on purpose (`Response Status Error Code 404`, `htmx:targetError`). Don't grep the output for `Error`. Write it to a file so the exit code survives: `npm test > /tmp/htmx-test.log 2>&1; echo "exit $?"; grep -E "test files|❌" /tmp/htmx-test.log`. Each `❌` line names a failing test, and the `N/N test files | X passed, Y failed` line is the result. If the first file fails with "Browser tests did not start after 20000ms", it is a cold-start flake. Rerun before investigating.
 
 ## Conventions
 
